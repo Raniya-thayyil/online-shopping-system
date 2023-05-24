@@ -9,6 +9,7 @@ public class User {
     private String gender;
 
     ArrayList<UserAccount> accountList = new ArrayList<>();
+    ArrayList<Order> orders = new ArrayList<>();
 
     public User(String name, int age, String gender) {
         this.name = name;
@@ -29,7 +30,9 @@ public class User {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if (age > 0) {
+            this.age = age;
+        }
     }
 
     public String getGender() {
@@ -58,9 +61,41 @@ public class User {
         return true;
     }
 
-    public void addProductToCart(Cart cart, Product product) {
-        Cart.products.add(product);
+    public boolean addProductToCart(Amazon amazon, Cart cart, Product product, int quantity) {
 
+        if (!amazon.productsList.contains(product)) {
+            return false;
+        }
+        if (quantity < 1) {
+            return false;
+        }
+
+        cart.products.add(product);
+        product.setQuantity(quantity);
+
+        double totalPrice = product.getPrice();
+
+        totalPrice *= quantity;
+        product.setPrice(totalPrice);
+
+        return true;
+
+    }
+
+    public boolean placeOrder(Cart cart) {
+        Order order = new Order(cart.products, cart.getTotalprice());
+
+        if (cart.products.isEmpty()) {
+            order.setStatus("failed,check your cart");
+            this.orders.add(order);
+            return false;
+        }
+        order.setProduct(cart.products);
+        order.setStatus("order placed");
+        order.setTotalPrice(cart.getTotalprice());
+        this.orders.add(order);      
+
+        return true;
     }
 
     @Override
