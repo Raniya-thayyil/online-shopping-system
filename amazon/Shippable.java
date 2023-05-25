@@ -37,14 +37,12 @@ public class Shippable implements ShippableInterface {
     public void generateTrackingNumberOfOrderBy(User user) {
 
         for (Order order : user.orders) {
-            for (Product product : order.product) {               
+            for (Product product : order.products) {               
                 this.setShippingStatus("shipped");                
                 Shippable shippableProduct = new Shippable(product, this.getShippingStatus(), this.getTrackingNumber());
                 System.out.println(shippableProduct);
             }
-
         }
-
     }
 
     @Override
@@ -52,5 +50,4 @@ public class Shippable implements ShippableInterface {
         return "Shippable [product=" + product + ", shippingStatus=" + shippingStatus + ", trackingNumber="
                 + trackingNumber + "]";
     }
-
 }

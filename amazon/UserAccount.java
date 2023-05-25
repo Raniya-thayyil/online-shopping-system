@@ -29,7 +29,6 @@ public class UserAccount {
     @Override
     public String toString() {
         return "UserAccount [username=" + username + ", password=" + password + "]";
-    }  
- 
+    }   
     
 }

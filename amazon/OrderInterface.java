@@ -6,6 +6,5 @@ public interface OrderInterface {
 
     ArrayList<Product> getProducts();
     double getTotalPrice();
-    String getOrderStatus();  
-    
+    String getOrderStatus();      
 }

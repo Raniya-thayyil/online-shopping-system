@@ -22,7 +22,6 @@ public class UserTest {
         amazon.productsList.add(watch);
         boolean got1 = lilli.addProductToCart(amazon, lillisCart, watch, 1);
         assertTrue(got1);
-
     }
 
     @Test
@@ -38,7 +37,6 @@ public class UserTest {
         // test case 2
         boolean got1 = aji.createAccount(amazon, "aji", "123");
         assertFalse(got1);
-
     }
 
     @Test
@@ -57,7 +55,6 @@ public class UserTest {
         lilli.addProductToCart(amazon, lillisCart, watch, 1);
         boolean got1 = lilli.placeOrder(lillisCart);
         assertTrue(got1);
-
     }
 
     @Test
@@ -69,6 +66,5 @@ public class UserTest {
         int expected = 21;
         int got = lilli.getAge();
         assertEquals(expected, got);
-
     }
 }

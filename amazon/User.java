@@ -7,6 +7,7 @@ public class User {
     private String name;
     private int age;
     private String gender;
+    Cart cart;
 
     ArrayList<UserAccount> accountList = new ArrayList<>();
     ArrayList<Order> orders = new ArrayList<>();
@@ -57,6 +58,7 @@ public class User {
         myAccount.setUsername(username);
         myAccount.setPassword(password);
         this.accountList.add(myAccount);
+
         amazon.userAccounts.add(myAccount);
         return true;
     }
@@ -79,7 +81,6 @@ public class User {
         product.setPrice(totalPrice);
 
         return true;
-
     }
 
     public boolean placeOrder(Cart cart) {
@@ -93,7 +94,7 @@ public class User {
         order.setProduct(cart.products);
         order.setStatus("order placed");
         order.setTotalPrice(cart.getTotalprice());
-        this.orders.add(order);      
+        this.orders.add(order);
 
         return true;
     }
@@ -102,5 +103,4 @@ public class User {
     public String toString() {
         return "User [name=" + name + ", age=" + age + ", gender=" + gender + "]";
     }
-
 }

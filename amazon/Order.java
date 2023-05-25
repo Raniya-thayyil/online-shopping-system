@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Order implements OrderInterface{
 
-    ArrayList<Product> product;
+    ArrayList<Product> products;
     double totalPrice;
     String status;  
 
     public Order(ArrayList<Product> product, double totalPrice) {
-        this.product = product;
+        this.products = product;
         this.totalPrice = totalPrice;
     }
 
     @Override
     public ArrayList<Product> getProducts() {
-        return this.product;       
+        return this.products;       
     }
 
     @Override
@@ -37,15 +37,11 @@ public class Order implements OrderInterface{
     }
 
     public void setProduct(ArrayList<Product> product) {
-        this.product = product;
+        this.products = product;
     }
 
     @Override
     public String toString() {
-        return "Order [product=" + product + ", totalPrice=" + totalPrice + ", status=" + status + "]";
-    }
-
-    
-
-    
+        return "Order [products=" + products + ", totalPrice=" + totalPrice + ", status=" + status + "]";
+    }    
 }
